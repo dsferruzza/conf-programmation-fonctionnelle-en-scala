@@ -34,8 +34,378 @@
   <h3 class="date">27/10/2016</h3>
 </section>
 
-<section class="slide level6">
+<section id="à-propos-de-moi" class="slide level1">
+<h1>À propos de moi</h1>
+<ul>
+<li><a href="https://twitter.com/d_sferruzza">@d_sferruzza</a></li>
+<li><a href="https://github.com/dsferruzza">github.com/dsferruzza</a></li>
+<li>Responsable R&amp;D chez <a href="http://www.startup-palace.com">Startup Palace</a></li>
+<li>Doctorant en génie logiciel à l'Université de Nantes</li>
+</ul>
+<figure class="stretch">
+<img src="img/sp.gif" alt="">
+</figure>
+</section>
+<section id="it-all-starts-with-a-question" class="slide level1">
+<h1>It all starts with a question</h1>
+<blockquote>
+<p>Qu'est-ce que la programmation fonctionnelle ?</p>
+</blockquote>
+<figure class="stretch">
+<img src="img/suspicious.gif" alt="">
+</figure>
+</section>
+<section id="fp-is-for-functional-programming" class="slide level1">
+<h1>FP is for Functional Programming</h1>
+<blockquote>
+<p>[C'est] un <strong>paradigme</strong> de programmation qui considère le calcul en tant qu'<strong>évaluation</strong> de fonctions mathématiques.</p>
+</blockquote>
+<blockquote>
+<p>It is a <strong>declarative</strong> programming paradigm, which means programming is done with <strong>expressions</strong>.</p>
+</blockquote>
+<p><small>Sources : <a href="https://fr.wikipedia.org/wiki/Programmation_fonctionnelle">Wikipedia FR</a> / <a href="https://en.wikipedia.org/wiki/Functional_programming">Wikipedia EN</a></small></p>
+</section>
+<section id="lambda-calcul-λ-calculus" class="slide level1">
+<h1>Lambda calcul (λ calculus)</h1>
+<ul>
+<li>Alonzo Church (1930s)</li>
+<li>système formel équivalent à la machine de Turing</li>
+</ul>
+<figure class="stretch">
+<img src="img/gordon.png" alt="">
+</figure>
+<p><small>Slides sympa : <a href="http://fr.slideshare.net/normanrichards/the-lambda-calculus-and-the-javascript">The Lambda Calculus and The JavaScript</a></small></p>
+</section>
+<section id="déclaratif-vs.-imperatif" class="slide level1">
+<h1>Déclaratif vs. imperatif</h1>
+<blockquote>
+<p><strong>Programmation impérative</strong>: utiliser des instructions qui changent l'état du programme</p>
+<p><strong>Programmation déclarative</strong>: exprimer la logique du programme sans décrire son flot d'exécution</p>
+</blockquote>
+<ul>
+<li>impératif : instructions de shopping</li>
+<li>déclaratif : liste de shopping</li>
+</ul>
+</section>
+<section id="pourquoi-apprendre-fp" class="slide level1">
+<h1>Pourquoi apprendre FP ?</h1>
+<ul>
+<li>prendre du recul sur la programmation</li>
+<li>agrandir <strong>et</strong> consolider sa zone de confort</li>
+<li>réutiliser les concepts intéressants pour faire de <strong>meilleurs programmes</strong></li>
+</ul>
+<blockquote>
+<p>Apprendre Haskell permet d'écrire de meilleurs programmes, même dans d'autres langages.</p>
+</blockquote>
+<figure class="stretch">
+<img src="img/promise.gif" alt="">
+</figure>
+</section>
+<section id="concepts" class="slide level1">
+<h1>Concepts</h1>
+<p>Aujourd'hui on va explorer des concepts vraiment cools issus de la programmation fonctionnelle moderne :</p>
+<ul>
+<li>transparence référentielle</li>
+<li>fonctions d’ordre supérieur</li>
+<li>évaluation paresseuse</li>
+<li>immuabilité</li>
+<li>types de données algébriques</li>
+</ul>
+</section>
+<section id="fonction-impure" class="slide level1">
+<h1>Fonction impure</h1>
+<pre class="scala"><code>def diviserParDeux(nombre: Double): Double = {
+  val missile = lancerUnMissileNucleaire()
+  fairePorterLeChapeauAuDrManhattan(missile)
+  nombre / 2
+}</code></pre>
+<p>Cette fonction a des <strong>effets de bord</strong> <em>observables</em> qu'on ne peut pas deviner en regardant sa valeur de retour. Il faut donc faire constamment attention lorsqu'on la manipule !</p>
+<figure class="stretch">
+<img src="img/fail.gif" alt="">
+</figure>
+</section>
+<section id="fonction-pure" class="slide level1">
+<h1>Fonction pure</h1>
+<pre class="scala"><code>def ajouterCinq(nombre: Double): Double = {
+  nombre + 5
+}</code></pre>
+<p>Cette fonction n'a pas d'effets de bord. Elle renvoie <strong>toujours</strong> le même résultat lorsqu'on l'appelle avec les mêmes arguments.</p>
+<pre class="scala"><code>ajouterCinq(-4) == ajouterCinq(-4)</code></pre>
+<figure class="stretch">
+<img src="img/excellent.gif" alt="">
+</figure>
+</section>
+<section id="transparence-référentielle" class="slide level1">
+<h1>Transparence référentielle</h1>
+<blockquote>
+<p>Le résultat du programme ne change pas si on remplace une expression par une expression de valeur équivalente.</p>
+</blockquote>
+<p>Utiliser des fonctions pures permet de <strong>raisonner</strong> sur son programme comme sur une équation.</p>
+<figure class="stretch">
+<img src="img/mind_blown.gif" alt="">
+</figure>
+</section>
+<section id="recommandations" class="slide level1">
+<h1>Recommandations</h1>
+<h2 id="construire-son-programme-avec-un-maximum-de-fonctions-pures">Construire son programme avec un maximum de fonctions pures</h2>
+<p>La logique métier est fiable, sans surprise et aisément testable.</p>
+<h2 id="isoler-les-fonctions-qui-ont-des-effets-de-bord">Isoler les fonctions qui ont des effets de bord</h2>
+<p>On sait quelles fonctions ont des effets de bord, ce qui permet d’être prudent lorsqu’on les manipule.</p>
+</section>
+<section id="concepts-1" class="slide level1">
+<h1>Concepts</h1>
+<ul>
+<li><del>transparence référentielle</del></li>
+<li>fonctions d’ordre supérieur</li>
+<li>évaluation paresseuse</li>
+<li>immuabilité</li>
+<li>types de données algébriques</li>
+</ul>
+</section>
+<section id="fonction-dordre-supérieur" class="slide level1">
+<h1>Fonction d'ordre supérieur</h1>
+<p>En Scala, les fonctions sont des objets de première classe (<em>first-class citizen</em>).</p>
+<p>Une fonction d’ordre supérieur est une fonction qui possède au moins l'une des propriétés suivantes :</p>
+<ul>
+<li>elle accepte au moins une autre fonction en paramètre</li>
+<li>elle retourne une fonction en résultat</li>
+</ul>
+<figure class="stretch">
+<img src="img/first_class.gif" alt="">
+</figure>
+</section>
+<section id="exemple-de-fonction-dordre-supérieur" class="slide level1">
+<h1>Exemple de fonction d'ordre supérieur</h1>
+<pre class="scala"><code>type Nb = Double</code></pre>
+<pre class="scala"><code>def appliquer2Fois(f: Nb =&gt; Nb, x: Nb): Nb = {
+  f(f(x))
+}
+// ^ accepte une fonction en paramètre
 
+def foisTrois(x: Nb): Nb = x * 3
+
+appliquer2Fois(foisTrois, 7)
+// foisTrois(foisTrois(7))
+// foisTrois(21)
+// 63</code></pre>
+</section>
+<section id="intérêt-des-fonctions-dordre-supérieur" class="slide level1">
+<h1>Intérêt des fonctions d'ordre supérieur</h1>
+<ul>
+<li>bien séparer les différentes tâches effectuées par nos fonctions</li>
+<li>écrire des fonctions composables, modulables, paramétrables</li>
+</ul>
+<figure class="stretch">
+<img src="img/inception.gif" alt="">
+</figure>
+</section>
+<section id="exemple" class="slide level1">
+<h1>Exemple !!</h1>
+<p>On va voir un exemple concret avec l'API des collections de Scala.</p>
+<figure class="stretch">
+<img src="img/party.gif" alt="">
+</figure>
+</section>
+<section id="situation" class="slide level1">
+<h1>Situation</h1>
+<pre class="scala"><code>case class Ville(
+  nom: String,
+  dep: Int,
+  mer: Boolean)
+// On disait que le departement est
+// représentable par un entier
+
+type LV = List[Ville]
+
+val villes: LV = List(
+  Ville(&quot;Nantes&quot;, 44, false),
+  Ville(&quot;Dunkerque&quot;, 59, true),
+  Ville(&quot;Paris&quot;, 75, false)
+)</code></pre>
+</section>
+<section id="situation-1" class="slide level1">
+<h1>Situation</h1>
+<p>On veut obtenir une liste de chaines de type <code>ville (dep)</code>.</p>
+<p>On va écrire une fonction <code>voirVilles</code> telle que :</p>
+<pre class="scala"><code>def voirVilles(villes: LV): List[String]
+
+voirVilles(villes)
+// --&gt; List(&quot;Nantes (44)&quot;, &quot;Dunkerque (59)&quot;,
+//      &quot;Paris (75)&quot;)</code></pre>
+</section>
+<section id="solution-impérative" class="slide level1">
+<h1>Solution impérative</h1>
+<p>Par exemple, en JS :</p>
+<pre class="javascript"><code>function voirVilles(villes) {
+  for (var i = 0; i &lt; villes.length; i++) {
+    villes[i] = villes[i].nom +
+                  &quot; (&quot; + villes[i].dep + &quot;)&quot;;
+  }
+  return villes;
+}</code></pre>
+<p>On mélange 2 comportements :</p>
+<ul>
+<li>parcourir le tableau</li>
+<li>transformer les données</li>
+</ul>
+</section>
+<section id="list.map" class="slide level1">
+<h1>List.map</h1>
+<pre class="scala"><code>def voirVilles(villes: LV): List[String] = {
+
+  def transformation(ville: Ville): String = {
+    ville.nom + &quot; (&quot; + ville.dep + &quot;)&quot;
+  }
+
+  villes.map(transformation)
+}</code></pre>
+<ul>
+<li><code>List.map</code> gère le parcours du tableau \o/</li>
+<li>on gère la transformation</li>
+</ul>
+</section>
+<section id="syntax-upgrade" class="slide level1">
+<h1>Syntax upgrade</h1>
+<p>Avec les <em>lambdas</em> et les <em>chaines interpolées</em> c'est encore plus clair !</p>
+<pre class="scala"><code>villes.map(v =&gt; s&quot;${v.nom} (${v.dep})&quot;)
+// --&gt; List(&quot;Nantes (44)&quot;, &quot;Dunkerque (59)&quot;,
+//      &quot;Paris (75)&quot;)</code></pre>
+<figure class="stretch">
+<img src="img/reindeer.gif" alt="">
+</figure>
+</section>
+<section id="list.filter" class="slide level1">
+<h1>List.filter</h1>
+<pre class="scala"><code>villes.filter(v =&gt; {
+  // Si la ville est près de la mer,
+  // on renvoie true, sinon false
+  v.mer
+})
+// --&gt; List(Ville(&quot;Dunkerque&quot;, 59, true))</code></pre>
+</section>
+<section id="chainons" class="slide level1">
+<h1>Chainons !</h1>
+<pre class="scala"><code>villes
+  .filter(v =&gt; !v.mer)
+  .map(v =&gt; s&quot;${v.nom} (${v.dep})&quot;)
+// --&gt; List(&quot;Nantes (44)&quot;, &quot;Paris (75)&quot;)</code></pre>
+<p><em>Rappel : <code>List.map</code> et <code>List.filter</code> sont des fonctions d'ordre supérieur.</em></p>
+</section>
+<section id="list.foldleft" class="slide level1">
+<h1>List.foldLeft</h1>
+<pre class="scala"><code>villes
+  .foldLeft(List.empty[String])((acc, cur) =&gt; {
+    val plage = if (cur.mer) {
+      List(s&quot;${cur.nom} plage&quot;)
+    } else {
+      List.empty
+    }
+    acc ++ List(cur.nom) ++ plage
+  })</code></pre>
+</section>
+<section id="list.foldleft-1" class="slide level1">
+<h1>List.foldLeft</h1>
+<pre class="scala"><code>def map[A, B](
+  list: List[A],
+  tr: (A =&gt; B)): List[B] = {
+
+  list.foldLeft(List.empty[B])((acc, cur) =&gt; {
+    acc ++ List(tr(cur))
+  })
+}
+def filter[A](
+  list: List[A],
+  pred: (A =&gt; Boolean)): List[A] = {
+
+  list.foldLeft(List.empty[A])((acc, cur) =&gt; {
+    if (pred(cur)) acc ++ List(cur) else acc
+  })
+}</code></pre>
+</section>
+<section id="recommandations-1" class="slide level1">
+<h1>Recommandations</h1>
+<p>Explorez l'API des collections !</p>
+<h2 id="antisèche">Antisèche</h2>
+<p>Si vous avez une liste (ou autre) et que vous voulez :</p>
+<ul>
+<li>appliquer une transformation sur chacune de ses cases (en conservant leur ordre/nombre) : <strong>map</strong></li>
+<li>supprimer certaines cases (en conservant l’ordre et le contenu des autres) : <strong>filter</strong></li>
+<li>le parcourir pour construire une nouvelle structure de données : <strong>fold/reduce</strong></li>
+</ul>
+</section>
+<section id="concepts-2" class="slide level1">
+<h1>Concepts</h1>
+<ul>
+<li><del>transparence référentielle</del></li>
+<li><del>fonctions d’ordre supérieur</del></li>
+<li>évaluation paresseuse</li>
+<li>immuabilité</li>
+<li>types de données algébriques</li>
+</ul>
+</section>
+<section id="stratégie-dévaluation" class="slide level1">
+<h1>Stratégie d'évaluation</h1>
+<ul>
+<li><strong>quand</strong> évaluer les arguments d'un appel de fonction</li>
+<li><strong>quel type de valeur</strong> passer à la fonction</li>
+</ul>
+<pre class="scala"><code>maFonction(lower(&quot;WHATEVER&quot;))
+//         ^ Quand évaluer ça ?
+// Que transmettre au corps de maFonction ?</code></pre>
+<figure class="stretch">
+<img src="img/bean.gif" alt="">
+</figure>
+</section>
+<section id="évaluation-stricte" class="slide level1">
+<h1>Évaluation stricte</h1>
+<p><em>strict evaluation, eager evaluation, greedy evaluation</em></p>
+<ul>
+<li><strong>quand :</strong> dès que l'expression peut être liée à une variable</li>
+<li><strong>quel type de valeurs :</strong>
+<ul>
+<li><em>call by value</em></li>
+<li><em>call by reference</em></li>
+<li><em>call by sharing</em></li>
+<li>...</li>
+</ul></li>
+</ul>
+</section>
+<section id="évaluation-non-stricte" class="slide level1">
+<h1>Évaluation non stricte</h1>
+<p><em>non-strict evaluation, lazy evaluation</em></p>
+<ul>
+<li><strong>call by name :</strong> les arguments sont substitués dans le corps de la fonction</li>
+<li><strong>call by need :</strong> idem, avec <em>mémoïsation</em> (≈ mise en cache du résultat de l'évaluation des arguments)</li>
+<li>...</li>
+</ul>
+</section>
+<section id="évaluation-paresseuse" class="slide level1">
+<h1>Évaluation paresseuse</h1>
+<p>L'exécution d'un bout de code ne se fait pas avant que les résultats de ce bout de code ne soient réellement nécessaires.</p>
+<figure class="stretch">
+<img src="img/clean.gif" alt="">
+</figure>
+</section>
+<section id="à-quoi-ça-sert" class="slide level1">
+<h1>À quoi ça sert ?</h1>
+<ul>
+<li><strong>optimisation :</strong> on peut éviter des calculs inutiles</li>
+<li><strong>maintenabilité :</strong>
+<ul>
+<li>on peut exprimer des structures de données infinies</li>
+<li>on peut définir des structures de contrôle comme des abstractions, au lieu de primitives</li>
+</ul></li>
+</ul>
+</section>
+<section id="concepts-3" class="slide level1">
+<h1>Concepts</h1>
+<ul>
+<li><del>transparence référentielle</del></li>
+<li><del>fonctions d’ordre supérieur</del></li>
+<li><del>évaluation paresseuse</del></li>
+<li>immuabilité</li>
+<li>types de données algébriques</li>
+</ul>
 </section>
     </div>
   </div>
