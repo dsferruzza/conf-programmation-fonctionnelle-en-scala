@@ -395,15 +395,13 @@ def filter[A](
 <li>on peut définir des structures de contrôle comme des abstractions, au lieu de primitives</li>
 </ul></li>
 </ul>
-</section>
-<section id="concepts-3" class="slide level1">
-<h1>Concepts</h1>
+<pre class="scala"><code>val a      = { println(&quot;a&quot;); 1 + 1 }
+lazy val b = { println(&quot;b&quot;); 1 + 1 }
+def c      = { println(&quot;c&quot;); 1 + 1 }</code></pre>
 <ul>
-<li><del>transparence référentielle</del></li>
-<li><del>fonctions d’ordre supérieur</del></li>
-<li><del>évaluation paresseuse</del></li>
-<li>immuabilité</li>
-<li>types de données algébriques</li>
+<li><code>a</code> calculé immédiatement et stocké</li>
+<li><code>b</code> calculé au 1<sup>er</sup> appel et stocké</li>
+<li><code>c</code> calculé à chaque appel</li>
 </ul>
 </section>
 <section id="exemple-1" class="slide level1">
@@ -451,6 +449,18 @@ res0: List[Int] = List(1, 2)</code></pre>
 2 plus petit que 3 ?
 res0: List[Int] = List(1, 2)</code></pre>
 </section>
+<section id="version-stricte-1" class="slide level1">
+<h1>Version stricte</h1>
+<figure class="stretch">
+<img src="img/without_lodash.gif" alt="">
+</figure>
+</section>
+<section id="version-paresseuse-1" class="slide level1">
+<h1>Version paresseuse</h1>
+<figure class="stretch">
+<img src="img/with_lodash.gif" alt="">
+</figure>
+</section>
 <section id="évaluation-paresseuse-1" class="slide level1">
 <h1>Évaluation paresseuse</h1>
 <ul>
@@ -461,6 +471,66 @@ res0: List[Int] = List(1, 2)</code></pre>
 </ul>
 <p><strong>Avantages :</strong> peut augmenter la maintenabilité <em>et</em> les performances</p>
 <p><strong>Inconvénients :</strong> peut introduire de l'<em>overhead</em> (dépend pas mal de la techno)</p>
+</section>
+<section id="concepts-3" class="slide level1">
+<h1>Concepts</h1>
+<ul>
+<li><del>transparence référentielle</del></li>
+<li><del>fonctions d’ordre supérieur</del></li>
+<li><del>évaluation paresseuse</del></li>
+<li>immuabilité</li>
+<li>types de données algébriques</li>
+</ul>
+</section>
+<section id="immuabilité" class="slide level1">
+<h1>Immuabilité</h1>
+<blockquote>
+<p>Un objet immuable est un objet dont l'état ne peut pas être modifié après sa création.</p>
+</blockquote>
+<figure class="stretch">
+<img src="img/good.gif" alt="">
+</figure>
+</section>
+<section id="constantes" class="slide level1">
+<h1>Constantes</h1>
+<pre class="scala"><code>val a = 1
+a = 2 // error: reassignment to val</code></pre>
+<p>Par défaut, on utilise <code>val</code> et donc on ne peux pas réassigner une nouvelle valeur.</p>
+<pre class="scala"><code>var a = 1
+a = 2 // ok</code></pre>
+<p>On peut utiliser <code>var</code> pour faire ça. Mais c'est <strong>dangereux</strong> : ça complique le raisonnement sur code.</p>
+<blockquote>
+<p>En pratique, c'est très rare d'en avoir besoin.</p>
+</blockquote>
+</section>
+<section id="objets-muables" class="slide level1">
+<h1>Objets muables</h1>
+<pre class="scala"><code>case class Personne(var nom: String, ville: String)
+
+val p = Personne(&quot;Batman&quot;, &quot;Gotham&quot;)
+println(p)
+// --&gt; Personne(&quot;Batman&quot;, &quot;Gotham&quot;)
+
+p = Personne(&quot;Robin&quot;, &quot;Gotham&quot;)
+// error: reassignment to val
+
+p.nom = &quot;Robin&quot;
+println(p)
+// --&gt; Personne(&quot;Robin&quot;, &quot;Gotham&quot;)</code></pre>
+</section>
+<section id="objets-immuables" class="slide level1">
+<h1>Objets immuables</h1>
+<pre class="scala"><code>case class Personne(nom: String, ville: String)
+
+val p1 = Personne(&quot;Batman&quot;, &quot;Gotham&quot;)
+println(p1)
+// --&gt; Personne(&quot;Batman&quot;, &quot;Gotham&quot;)
+
+val p2 = p1.copy(nom = &quot;Robin&quot;)
+println(p2)
+// --&gt; Personne(&quot;Robin&quot;, &quot;Gotham&quot;)
+println(p1)
+// --&gt; Personne(&quot;Batman&quot;, &quot;Gotham&quot;)</code></pre>
 </section>
     </div>
   </div>

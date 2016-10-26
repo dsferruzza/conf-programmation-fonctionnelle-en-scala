@@ -398,14 +398,15 @@ L'exécution d'un bout de code ne se fait pas avant que les résultats de ce bou
 	- on peut exprimer des structures de données infinies
 	- on peut définir des structures de contrôle comme des abstractions, au lieu de primitives
 
+```scala
+val a      = { println("a"); 1 + 1 }
+lazy val b = { println("b"); 1 + 1 }
+def c      = { println("c"); 1 + 1 }
+```
 
-# Concepts
-
-- ~~transparence référentielle~~
-- ~~fonctions d’ordre supérieur~~
-- ~~évaluation paresseuse~~
-- immuabilité
-- types de données algébriques
+- `a` calculé immédiatement et stocké
+- `b` calculé au 1<sup>er</sup> appel et stocké
+- `c` calculé à chaque appel
 
 
 # Exemple
@@ -468,6 +469,16 @@ res0: List[Int] = List(1, 2)
 ```
 
 
+# Version stricte
+
+<figure class="stretch"><img src="img/without_lodash.gif" alt=""></figure>
+
+
+# Version paresseuse
+
+<figure class="stretch"><img src="img/with_lodash.gif" alt=""></figure>
+
+
 # Évaluation paresseuse
 
 - séparation
@@ -478,3 +489,74 @@ res0: List[Int] = List(1, 2)
 **Avantages :** peut augmenter la maintenabilité *et* les performances
 
 **Inconvénients :** peut introduire de l'*overhead* (dépend pas mal de la techno)
+
+
+# Concepts
+
+- ~~transparence référentielle~~
+- ~~fonctions d’ordre supérieur~~
+- ~~évaluation paresseuse~~
+- immuabilité
+- types de données algébriques
+
+
+# Immuabilité
+
+> Un objet immuable est un objet dont l'état ne peut pas être modifié après sa création.
+
+<figure class="stretch"><img src="img/good.gif" alt=""></figure>
+
+
+# Constantes
+
+```scala
+val a = 1
+a = 2 // error: reassignment to val
+```
+
+Par défaut, on utilise `val` et donc on ne peux pas réassigner une nouvelle valeur.
+
+```scala
+var a = 1
+a = 2 // ok
+```
+
+On peut utiliser `var` pour faire ça.
+Mais c'est **dangereux** : ça complique le raisonnement sur code.
+
+> En pratique, c'est très rare d'en avoir besoin.
+
+
+# Objets muables
+
+```scala
+case class Personne(var nom: String, ville: String)
+
+val p = Personne("Batman", "Gotham")
+println(p)
+// --> Personne("Batman", "Gotham")
+
+p = Personne("Robin", "Gotham")
+// error: reassignment to val
+
+p.nom = "Robin"
+println(p)
+// --> Personne("Robin", "Gotham")
+```
+
+
+# Objets immuables
+
+```scala
+case class Personne(nom: String, ville: String)
+
+val p1 = Personne("Batman", "Gotham")
+println(p1)
+// --> Personne("Batman", "Gotham")
+
+val p2 = p1.copy(nom = "Robin")
+println(p2)
+// --> Personne("Robin", "Gotham")
+println(p1)
+// --> Personne("Batman", "Gotham")
+```
