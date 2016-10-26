@@ -1,0 +1,12 @@
+{
+  "name": "roboto-slab-font",
+  "version": "0.0.1",
+  "main": "./**/*.{woff,svg,eot,ttf,css}",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

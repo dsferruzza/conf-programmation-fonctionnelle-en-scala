@@ -1,0 +1,122 @@
+
+// Default mixins and settings -----------------
+@import "./lib/reveal.js/css/theme/template/mixins";
+@import "./lib/reveal.js/css/theme/template/settings";
+// ---------------------------------------------
+
+
+
+// Include theme-specific fonts
+@import "./lib/lato-font/scss/public-api.scss";
+$lato-font-path: './lib/lato-font/fonts';
+@include lato-render-variants($lato-variants);
+$roboto-slab-font-path: './lib/roboto-slab-font/fonts';
+@import "./lib/roboto-slab-font/roboto-slab.scss";
+
+
+// Override theme settings (see ../template/settings.scss)
+$mainFont: 'Lato', sans-serif;
+$mainColor: #000;
+$headingFont: 'Roboto Slab', sans-serif;
+$headingColor: rgb(43, 178, 211);
+$secondaryHeadingColor: rgb(232, 72, 106);
+$headingTextShadow: none;
+$headingTextTransform: none;
+$backgroundColor: #fff;
+$linkColor: $headingColor;
+$linkColorHover: darken( $linkColor, 20% );
+$selectionBackgroundColor: rgba(0, 0, 0, 0.99);
+$mainFontSize: 38px;
+
+$heading1Size: 3.77em / 2.1;
+$heading2Size: 2.11em / 2.1;
+$heading3Size: 1.55em / 2.1;
+$heading4Size: 1.00em / 2.1;
+
+
+// Theme template ------------------------------
+@import "./lib/reveal.js/css/theme/template/theme";
+// ---------------------------------------------
+
+.reveal {
+	.slides {
+		section {
+			&:first-child {
+				h2, h3 {
+					font-family: $mainFont;
+				}
+
+				h1 {
+					font-size: $heading1Size * 1.1;
+					margin-top: 20px;
+					margin-bottom: 60px;
+					color: $headingColor;
+				}
+
+				h2 {
+					font-size: $heading2Size * 1.5;
+					display: inline-block;
+					margin-right: 50px;
+					color: $secondaryHeadingColor;
+				}
+
+				h3 {
+					font-size: $heading3Size * 1.5;
+					display: inline-block;
+					color: $mainColor;
+				}
+			}
+
+			h1 {
+				color: $secondaryHeadingColor;
+				font-weight: 700;
+			}
+
+			img {
+				border: none;
+				box-shadow: none;
+			}
+
+			pre {
+				box-shadow: none;
+				font-size: 0.85em;
+
+				code {
+					background-color: transparent;
+					color: black;
+					overflow: inherit;
+				}
+			}
+
+			.smallcode code {
+				font-size: 0.7em;
+				line-height: 1;
+			}
+
+			blockquote {
+				box-shadow: 0px 0px 4px $headingColor;
+			}
+		}
+	}
+
+	.slide-number {
+		font-size: 30px;
+		background-color: transparent;
+		color: $headingColor;
+	}
+}
+
+// Syntax highlight ----------------------------
+@import "./node_modules/highlight.js/styles/tomorrow";
+// ---------------------------------------------
+.scala {
+	& .hljs-type {
+		color: #3e999f;
+	}
+	& .hljs-function {
+		color: #000;
+	}
+}
+.hljs-attr {
+	@extend .hljs-name
+}
