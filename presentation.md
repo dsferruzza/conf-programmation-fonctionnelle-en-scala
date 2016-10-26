@@ -406,3 +406,75 @@ L'exécution d'un bout de code ne se fait pas avant que les résultats de ce bou
 - ~~évaluation paresseuse~~
 - immuabilité
 - types de données algébriques
+
+
+# Exemple
+
+```scala
+val l = List(0, 1, 2, 3, 4)
+
+def plusUn(nb: Int): Int = {
+  println(s"$nb + 1")
+  if (nb > 2) println("Traitement long")
+  nb + 1
+}
+
+def petit(nb: Int): Boolean = {
+  println(s"$nb plus petit que 3 ?")
+  nb < 3
+}
+```
+
+
+# Version stricte
+
+```scala
+l.map(plusUn).filter(petit).take(2)
+```
+
+```text
+0 + 1
+1 + 1
+2 + 1
+3 + 1
+Traitement long
+4 + 1
+Traitement long
+1 plus petit que 3 ?
+2 plus petit que 3 ?
+3 plus petit que 3 ?
+4 plus petit que 3 ?
+5 plus petit que 3 ?
+res0: List[Int] = List(1, 2)
+```
+
+
+# Version paresseuse
+
+```scala
+Stream(l: _*)
+  .map(plusUn)
+  .filter(petit)
+  .take(2)
+  .toList
+```
+
+```text
+0 + 1
+1 plus petit que 3 ?
+1 + 1
+2 plus petit que 3 ?
+res0: List[Int] = List(1, 2)
+```
+
+
+# Évaluation paresseuse
+
+- séparation
+  - du Calcul, de la **génération**<br>*→ où le calcul d'une valeur est-il défini ?*
+  - du Contrôle, de la **condition d'arrêt**<br>*→ où le calcul d'une valeur se produit-il ?*
+- *colle* qui permet d'assembler efficacement des (bouts de) programmes : facilite l'approche *diviser pour régner*
+
+**Avantages :** peut augmenter la maintenabilité *et* les performances
+
+**Inconvénients :** peut introduire de l'*overhead* (dépend pas mal de la techno)
