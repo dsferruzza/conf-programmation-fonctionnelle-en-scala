@@ -479,8 +479,8 @@ res0: List[Int] = List(1, 2)
 # Évaluation paresseuse
 
 - séparation
-  - du Calcul, de la **génération**<br>*→ où le calcul d'une valeur est-il défini ?*
-  - du Contrôle, de la **condition d'arrêt**<br>*→ où le calcul d'une valeur se produit-il ?*
+    - du Calcul, de la **génération**<br>*→ où le calcul d'une valeur est-il défini ?*
+    - du Contrôle, de la **condition d'arrêt**<br>*→ où le calcul d'une valeur se produit-il ?*
 - *colle* qui permet d'assembler efficacement des (bouts de) programmes : facilite l'approche *diviser pour régner*
 
 **Avantages :** peut augmenter la maintenabilité *et* les performances
