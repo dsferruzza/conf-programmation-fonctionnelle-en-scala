@@ -68,7 +68,6 @@ Aujourd'hui on va explorer des concepts vraiment cools issus de la programmation
 - fonctions d’ordre supérieur
 - évaluation paresseuse
 - immuabilité
-- types de données algébriques
 
 
 # Fonction impure
@@ -130,7 +129,6 @@ On sait quelles fonctions ont des effets de bord, ce qui permet d’être pruden
 - fonctions d’ordre supérieur
 - évaluation paresseuse
 - immuabilité
-- types de données algébriques
 
 
 # Fonction d'ordre supérieur
@@ -346,7 +344,6 @@ Si vous avez une liste (ou autre) et que vous voulez :
 - ~~fonctions d’ordre supérieur~~
 - évaluation paresseuse
 - immuabilité
-- types de données algébriques
 
 
 # Stratégie d'évaluation
@@ -497,7 +494,6 @@ res0: List[Int] = List(1, 2)
 - ~~fonctions d’ordre supérieur~~
 - ~~évaluation paresseuse~~
 - immuabilité
-- types de données algébriques
 
 
 # Immuabilité
@@ -560,3 +556,55 @@ println(p2)
 println(p1)
 // --> Personne("Batman", "Gotham")
 ```
+
+
+# Avantages
+
+- lisibilité/maintenabilité : 1 référence pour 1 valeur
+- pas d'effets de bord
+- *thread safe*
+
+Et les perfs ?
+
+<figure class="stretch"><img src="img/suspicious2.gif" alt=""></figure>
+
+
+# Performances
+
+Introduit de l'*overhead*, mais souvent le compromis maintenabilité/performances est bon
+
+<figure class="stretch"><img src="img/tree.png" alt=""></figure>
+
+
+# Concepts
+
+- ~~transparence référentielle~~
+- ~~fonctions d’ordre supérieur~~
+- ~~évaluation paresseuse~~
+- ~~immuabilité~~
+
+<figure class="stretch"><img src="img/drop.gif" alt=""></figure>
+
+
+# Ressources
+
+- [Functional Programming in Scala](https://www.manning.com/books/functionaal-programming-in-scala) : super livre sur FP & Scala
+- [Learn You A Haskell For Great Good](http://learnyouahaskell.com/) : livre très accessible pour débuter Haskell ([traduction FR non officielle](http://lyah.haskell.fr/))
+- [Why Functional Programming Matters](http://www.cs.kent.ac.uk/people/staff/dat/miranda/whyfp90.pdf) : pourquoi les fonctions d'ordre supérieur et l'évaluation paresseuse sont parmi les meilleurs outils pour écrire des programmes modulaires
+
+
+# Ressources
+
+- [John Hughes on Why Functional Programming Matters!](http://www.infoq.com/interviews/john-hughes-fp)
+- [Is your programming language unreasonable?](http://fsharpforfunandprofit.com/posts/is-your-language-unreasonable/) *or, why predictability is important*
+
+
+# Questions ?
+
+<figure class="stretch"><img src="img/question.gif" alt=""></figure>
+
+Twitter : [\@d_sferruzza](https://twitter.com/d\_sferruzza)
+
+Slides sur GitHub :
+
+[dsferruzza/conf-programmation-fonctionnelle-en-scala](http://github.com/dsferruzza/conf-programmation-fonctionnelle-en-scala)

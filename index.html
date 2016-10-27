@@ -108,7 +108,6 @@
 <li>fonctions d’ordre supérieur</li>
 <li>évaluation paresseuse</li>
 <li>immuabilité</li>
-<li>types de données algébriques</li>
 </ul>
 </section>
 <section id="fonction-impure" class="slide level1">
@@ -158,7 +157,6 @@
 <li>fonctions d’ordre supérieur</li>
 <li>évaluation paresseuse</li>
 <li>immuabilité</li>
-<li>types de données algébriques</li>
 </ul>
 </section>
 <section id="fonction-dordre-supérieur" class="slide level1">
@@ -339,7 +337,6 @@ def filter[A](
 <li><del>fonctions d’ordre supérieur</del></li>
 <li>évaluation paresseuse</li>
 <li>immuabilité</li>
-<li>types de données algébriques</li>
 </ul>
 </section>
 <section id="stratégie-dévaluation" class="slide level1">
@@ -479,7 +476,6 @@ res0: List[Int] = List(1, 2)</code></pre>
 <li><del>fonctions d’ordre supérieur</del></li>
 <li><del>évaluation paresseuse</del></li>
 <li>immuabilité</li>
-<li>types de données algébriques</li>
 </ul>
 </section>
 <section id="immuabilité" class="slide level1">
@@ -531,6 +527,61 @@ println(p2)
 // --&gt; Personne(&quot;Robin&quot;, &quot;Gotham&quot;)
 println(p1)
 // --&gt; Personne(&quot;Batman&quot;, &quot;Gotham&quot;)</code></pre>
+</section>
+<section id="avantages" class="slide level1">
+<h1>Avantages</h1>
+<ul>
+<li>lisibilité/maintenabilité : 1 référence pour 1 valeur</li>
+<li>pas d'effets de bord</li>
+<li><em>thread safe</em></li>
+</ul>
+<p>Et les perfs ?</p>
+<figure class="stretch">
+<img src="img/suspicious2.gif" alt="">
+</figure>
+</section>
+<section id="performances" class="slide level1">
+<h1>Performances</h1>
+<p>Introduit de l'<em>overhead</em>, mais souvent le compromis maintenabilité/performances est bon</p>
+<figure class="stretch">
+<img src="img/tree.png" alt="">
+</figure>
+</section>
+<section id="concepts-4" class="slide level1">
+<h1>Concepts</h1>
+<ul>
+<li><del>transparence référentielle</del></li>
+<li><del>fonctions d’ordre supérieur</del></li>
+<li><del>évaluation paresseuse</del></li>
+<li><del>immuabilité</del></li>
+</ul>
+<figure class="stretch">
+<img src="img/drop.gif" alt="">
+</figure>
+</section>
+<section id="ressources" class="slide level1">
+<h1>Ressources</h1>
+<ul>
+<li><a href="https://www.manning.com/books/functionaal-programming-in-scala">Functional Programming in Scala</a> : super livre sur FP &amp; Scala</li>
+<li><a href="http://learnyouahaskell.com/">Learn You A Haskell For Great Good</a> : livre très accessible pour débuter Haskell (<a href="http://lyah.haskell.fr/">traduction FR non officielle</a>)</li>
+<li><a href="http://www.cs.kent.ac.uk/people/staff/dat/miranda/whyfp90.pdf">Why Functional Programming Matters</a> : pourquoi les fonctions d'ordre supérieur et l'évaluation paresseuse sont parmi les meilleurs outils pour écrire des programmes modulaires</li>
+</ul>
+</section>
+<section id="ressources-1" class="slide level1">
+<h1>Ressources</h1>
+<ul>
+<li><a href="http://www.infoq.com/interviews/john-hughes-fp">John Hughes on Why Functional Programming Matters!</a></li>
+<li><a href="http://fsharpforfunandprofit.com/posts/is-your-language-unreasonable/">Is your programming language unreasonable?</a> <em>or, why predictability is important</em></li>
+</ul>
+</section>
+<section id="questions" class="slide level1">
+<h1>Questions ?</h1>
+<figure class="stretch">
+<img src="img/question.gif" alt="">
+</figure>
+<p>Twitter : <a href="https://twitter.com/d_sferruzza">@d_sferruzza</a></p>
+<p>Slides sur GitHub :</p>
+<p><a href="http://github.com/dsferruzza/conf-programmation-fonctionnelle-en-scala">dsferruzza/conf-programmation-fonctionnelle-en-scala</a></p>
 </section>
     </div>
   </div>
